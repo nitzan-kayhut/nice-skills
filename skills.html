@@ -270,13 +270,28 @@ let meetingMode = false;
 let lastBackupCount = 0;
 let alertDismissed = false;
 
-function loadData() {
+async function loadData() {
   const s = localStorage.getItem('skills-data');
   const p = localStorage.getItem('skills-picked');
   const lb = localStorage.getItem('skills-last-backup');
   skills = s ? JSON.parse(s) : [];
   picked = new Set(p ? JSON.parse(p) : []);
   lastBackupCount = lb ? parseInt(lb) : 0;
+
+  try {
+    const res = await fetch('skills-import.json', { cache: 'no-cache' });
+    if (res.ok) {
+      const data = await res.json();
+      const existingIds = new Set(skills.map(x => x.id));
+      let added = 0;
+      (data.skills || []).forEach(sk => {
+        if (!existingIds.has(sk.id)) { skills.push(sk); added++; }
+      });
+      if (added > 0) localStorage.setItem('skills-data', JSON.stringify(skills));
+    }
+  } catch (e) {
+    console.log('skills-import.json לא זמין (file:// או רשת)', e);
+  }
 }
 function saveSkills() {
   localStorage.setItem('skills-data', JSON.stringify(skills));
@@ -538,9 +553,11 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
 
-loadData();
-savePicked();
-render();
+(async () => {
+  await loadData();
+  savePicked();
+  render();
+})();
 </script>
 
 </body>
