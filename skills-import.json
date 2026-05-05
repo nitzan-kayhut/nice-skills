@@ -1,0 +1,24 @@
+{
+  "skills": [
+    {
+      "id": "sk-code-discipline",
+      "name": "Code Discipline",
+      "cat": "core",
+      "desc": "מתודולוגיה להגבלת עוזרי קוד AI ומניעת תקלות נפוצות: הנחות שקטות, over-engineering, scope creep, וקריטריוני הצלחה חלשים. אוכפת 6 עקרונות בכל שפת תכנות.",
+      "why": "מונע מ-Claude להוסיף קוד מיותר, להמציא API-ים שלא קיימים, או לעשות 'תוך כדי' רפקטורים. סדר עדיפויות קבוע: יציבות ← אמינות ← קריאות ← תחזוקתיות ← סקלביליות ← ביצועים ← אלגנטיות. קריטריונים מדידים לסיום משימה.",
+      "source": "github.com/eliranpv11/code-discipline-skills",
+      "install": "/plugin marketplace add eliranpv11/code-discipline-skills\n/plugin install code-discipline@code-discipline"
+    },
+    {
+      "id": "sk-hebrew-writer",
+      "name": "Hebrew Writer (כותב עברי)",
+      "cat": "productivity",
+      "desc": "יוצר טקסט עברי שלא ניתן להבדיל מכתיבה ישראלית טבעית. כולל סריקת זיהוי AI, שכפול קול אישי מדוגמאות כתיבה, וציון איכות אוטונומי על פני 8 ממדים לשוניים.",
+      "why": "כותב עברית 'דוגרי' אותנטית - לא תרגום מאנגלית. עוקף GPTZero, Originality.ai, Turnitin, Copyleaks ו-ZeroGPT. מנותח על בסיס 500K תגובות ישראליות אמיתיות (ממוצע 8.9 מילים למשפט). מזהה 55+ דפוסי AI ייחודיים בעברית. שכפול סגנון אישי מדוגמאות. סף איכות אוטונומי 95/100.",
+      "source": "github.com/baldiga/hebrew-writer",
+      "install": "mkdir -p ~/.claude/skills/hebrew-writer\ncurl -sL https://raw.githubusercontent.com/baldiga/hebrew-writer/main/SKILL.md -o ~/.claude/skills/hebrew-writer/SKILL.md\ncurl -sL https://raw.githubusercontent.com/baldiga/hebrew-writer/main/voice-profile-template.md -o ~/.claude/skills/hebrew-writer/voice-profile-template.md"
+    }
+  ],
+  "picked": [],
+  "exported": "2026-05-05T00:00:00.000Z"
+}

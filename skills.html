@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מאגר Skills ל-Claude Code</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: #f7f6f2; color: #2c2c2a; line-height: 1.6;
+    min-height: 100vh; padding: 24px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  header { margin-bottom: 24px; }
+  h1 { font-size: 28px; font-weight: 600; margin-bottom: 6px; }
+  .subtitle { color: #5f5e5a; font-size: 15px; }
+
+  .backup-alert {
+    display: none;
+    background: #faeeda; border: 1px solid #ba7517;
+    border-radius: 8px; padding: 12px 16px; margin-bottom: 16px;
+    color: #633806; font-size: 14px;
+    align-items: center; gap: 12px; justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .backup-alert.show { display: flex; }
+  .backup-alert button {
+    background: #633806; color: #fff; border-color: #633806;
+    padding: 6px 14px; font-size: 13px;
+  }
+  .backup-alert button:hover { background: #412402; }
+
+  .controls {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-bottom: 16px; align-items: center;
+  }
+  input[type="text"] {
+    flex: 1; min-width: 220px;
+    padding: 10px 14px; font-size: 15px;
+    border: 1px solid #d3d1c7; border-radius: 8px;
+    background: #fff; font-family: inherit; direction: rtl;
+  }
+  input[type="text"]:focus { outline: none; border-color: #378add; box-shadow: 0 0 0 3px rgba(55,138,221,0.15); }
+
+  button {
+    padding: 10px 16px; font-size: 14px; font-weight: 500;
+    border: 1px solid #d3d1c7; border-radius: 8px;
+    background: #fff; cursor: pointer; font-family: inherit;
+    transition: all 0.15s; white-space: nowrap; color: #2c2c2a;
+  }
+  button:hover { background: #f1efe8; }
+  button.active { background: #e6f1fb; border-color: #378add; color: #0c447c; }
+  button.primary { background: #2c2c2a; color: #fff; border-color: #2c2c2a; }
+  button.primary:hover { background: #444441; }
+
+  .cats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .cat-btn { padding: 6px 12px; font-size: 13px; border-radius: 999px; }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px; margin-bottom: 24px;
+  }
+  .stat {
+    background: #fff; border: 1px solid #ece9e0; border-radius: 8px; padding: 14px;
+  }
+  .stat-label { font-size: 13px; color: #5f5e5a; margin-bottom: 4px; }
+  .stat-val { font-size: 24px; font-weight: 600; }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    background: #fff; border: 1px solid #ece9e0; border-radius: 12px;
+    padding: 16px; cursor: pointer; transition: all 0.15s;
+    display: flex; flex-direction: column;
+  }
+  .card:hover { border-color: #b4b2a9; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+  .card.picked { border: 2px solid #378add; padding: 15px; }
+
+  .card-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 8px; margin-bottom: 8px;
+  }
+  .card-name { font-weight: 600; font-size: 16px; }
+  .pick-btn { flex-shrink: 0; padding: 4px 10px; font-size: 12px; border-radius: 6px; }
+  .pick-btn.picked { background: #e6f1fb; color: #0c447c; border-color: #378add; }
+
+  .badge {
+    display: inline-block; padding: 2px 8px; font-size: 11px;
+    border-radius: 6px; margin-bottom: 10px; font-weight: 500;
+  }
+  .desc { font-size: 14px; color: #444441; margin-bottom: 10px; }
+  .why {
+    font-size: 13px; color: #5f5e5a;
+    padding-top: 10px; border-top: 1px solid #ece9e0; margin-top: auto;
+  }
+
+  .c-core { background: #eeedfe; color: #3c3489; border-color: #7f77dd; }
+  .c-engineering { background: #e6f1fb; color: #0c447c; border-color: #378add; }
+  .c-qa { background: #e1f5ee; color: #085041; border-color: #1d9e75; }
+  .c-devops { background: #faeeda; color: #633806; border-color: #ba7517; }
+  .c-productivity { background: #eaf3de; color: #27500a; border-color: #639922; }
+  .c-integrations { background: #faece7; color: #712b13; border-color: #d85a30; }
+  .c-meta { background: #fbeaf0; color: #72243e; border-color: #d4537e; }
+  .c-data { background: #fcebeb; color: #791f1f; border-color: #e24b4a; }
+  .c-all { background: #f1efe8; color: #444441; border-color: #888780; }
+
+  .empty { text-align: center; padding: 64px 24px; color: #5f5e5a; }
+  .empty h3 { font-size: 18px; color: #2c2c2a; margin-bottom: 8px; font-weight: 500; }
+  .empty p { font-size: 14px; margin-bottom: 16px; }
+  .empty .arrow { font-size: 32px; margin-bottom: 12px; }
+
+  .modal-bg {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    align-items: center; justify-content: center;
+    z-index: 100; padding: 24px;
+  }
+  .modal-bg.show { display: flex; }
+  .modal {
+    background: #fff; border-radius: 12px;
+    max-width: 600px; width: 100%; max-height: 80vh;
+    overflow-y: auto; padding: 24px; direction: rtl;
+  }
+  .modal h2 { font-size: 22px; margin-bottom: 8px; }
+  .modal h3 { font-size: 15px; margin-top: 16px; margin-bottom: 6px; color: #5f5e5a; }
+  .modal p { font-size: 14px; margin-bottom: 8px; }
+  .modal pre {
+    background: #f1efe8; padding: 10px 14px; border-radius: 6px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 13px; overflow-x: auto; direction: ltr; text-align: left;
+  }
+  .modal-close { margin-top: 20px; width: 100%; }
+
+  .actions-row { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+
+  .add-form {
+    display: none; background: #fff; border: 1px solid #ece9e0;
+    border-radius: 12px; padding: 16px; margin-bottom: 16px;
+  }
+  .add-form.show { display: block; }
+  .add-form label {
+    display: block; font-size: 13px; color: #5f5e5a;
+    margin-bottom: 4px; margin-top: 10px;
+  }
+  .add-form input, .add-form textarea, .add-form select {
+    width: 100%; padding: 8px 12px; font-size: 14px;
+    border: 1px solid #d3d1c7; border-radius: 6px;
+    font-family: inherit; direction: rtl;
+  }
+  .add-form textarea { min-height: 60px; resize: vertical; }
+  .form-actions { display: flex; gap: 8px; margin-top: 14px; }
+
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: #2c2c2a; color: #fff;
+    padding: 10px 20px; border-radius: 8px;
+    font-size: 14px; z-index: 200;
+    opacity: 0; transition: opacity 0.2s; pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
+
+  @media (max-width: 600px) {
+    body { padding: 16px; }
+    h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>מאגר Skills ל-Claude Code</h1>
+    <p class="subtitle">חיפוש, סינון, ובחירת skills לפגישת צוות. הנתונים נשמרים בדפדפן שלך.</p>
+  </header>
+
+  <div class="backup-alert" id="backup-alert">
+    <div>
+      ⚠️ <strong>הוספת <span id="alert-count">0</span> skills מאז הגיבוי האחרון.</strong>
+      ניקוי cookies / היסטוריה ימחק הכל. כדאי לגבות עכשיו.
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button onclick="exportJSON()">💾 הורד גיבוי</button>
+      <button onclick="dismissAlert()" style="background:transparent;color:#633806">סגור</button>
+    </div>
+  </div>
+
+  <div class="controls">
+    <input type="text" id="search" placeholder="חיפוש skill לפי שם, תיאור, או תועלת..." />
+    <button id="meeting-btn" onclick="toggleMeeting()">⭐ מצב פגישה (<span id="picked-n">0</span>)</button>
+  </div>
+
+  <div class="actions-row">
+    <button onclick="toggleAddForm()" class="primary">➕ הוסף skill חדש</button>
+    <button onclick="exportPicked()">📋 העתק רשימה לפגישה</button>
+    <button onclick="exportJSON()">💾 גיבוי המאגר (JSON)</button>
+    <button onclick="document.getElementById('import-file').click()">📂 ייבוא מ-JSON</button>
+    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(event)">
+    <button onclick="resetData()" style="color:#791f1f">🗑️ איפוס</button>
+  </div>
+
+  <div id="add-form" class="add-form">
+    <h3 style="margin:0 0 8px 0; font-size: 16px; color: #2c2c2a;">הוספת skill חדש</h3>
+    <label>שם</label>
+    <input type="text" id="f-name" placeholder="למשל: My Awesome Skill">
+    <label>קטגוריה</label>
+    <select id="f-cat">
+      <option value="core">ליבה</option>
+      <option value="engineering">הנדסה</option>
+      <option value="qa">QA ובדיקות</option>
+      <option value="devops">DevOps</option>
+      <option value="productivity">פרודוקטיביות</option>
+      <option value="integrations">אינטגרציות</option>
+      <option value="meta">Meta</option>
+      <option value="data">דאטה</option>
+    </select>
+    <label>תיאור קצר</label>
+    <textarea id="f-desc" placeholder="מה ה-skill עושה?"></textarea>
+    <label>למה זה שווה לצוות?</label>
+    <textarea id="f-why" placeholder="הערך לפגישת צוות"></textarea>
+    <label>מקור (URL או שם ריפו)</label>
+    <input type="text" id="f-source" placeholder="github.com/user/repo או URL">
+    <label>פקודת התקנה</label>
+    <input type="text" id="f-install" placeholder="npx skills add ... או pip install ...">
+    <div class="form-actions">
+      <button onclick="addSkill()" class="primary">שמור</button>
+      <button onclick="toggleAddForm()">ביטול</button>
+    </div>
+  </div>
+
+  <div class="cats" id="cats"></div>
+  <div class="stats" id="stats"></div>
+  <div class="grid" id="grid"></div>
+  <div id="empty" class="empty" style="display:none">
+    <div class="arrow">⬆️</div>
+    <h3>המאגר ריק</h3>
+    <p>לחץ על <strong>"הוסף skill חדש"</strong> למעלה כדי להתחיל לבנות את המאגר שלך.<br>
+    או על <strong>"ייבוא מ-JSON"</strong> אם יש לך גיבוי קיים.</p>
+  </div>
+
+</div>
+
+<div class="modal-bg" id="modal" onclick="closeModal(event)">
+  <div class="modal" id="modal-content" onclick="event.stopPropagation()"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const CATS = {
+  all: { label:'הכל' },
+  core: { label:'ליבה' },
+  engineering: { label:'הנדסה' },
+  qa: { label:'QA ובדיקות' },
+  devops: { label:'DevOps' },
+  productivity: { label:'פרודוקטיביות' },
+  integrations: { label:'אינטגרציות' },
+  meta: { label:'Meta' },
+  data: { label:'דאטה' }
+};
+
+let skills = [];
+let picked = new Set();
+let activeCat = 'all';
+let searchQ = '';
+let meetingMode = false;
+let lastBackupCount = 0;
+let alertDismissed = false;
+
+function loadData() {
+  const s = localStorage.getItem('skills-data');
+  const p = localStorage.getItem('skills-picked');
+  const lb = localStorage.getItem('skills-last-backup');
+  skills = s ? JSON.parse(s) : [];
+  picked = new Set(p ? JSON.parse(p) : []);
+  lastBackupCount = lb ? parseInt(lb) : 0;
+}
+function saveSkills() {
+  localStorage.setItem('skills-data', JSON.stringify(skills));
+  checkBackupAlert();
+}
+function savePicked() {
+  localStorage.setItem('skills-picked', JSON.stringify([...picked]));
+  document.getElementById('picked-n').textContent = picked.size;
+}
+
+function checkBackupAlert() {
+  const newSinceBackup = skills.length - lastBackupCount;
+  const alert = document.getElementById('backup-alert');
+  if (newSinceBackup >= 5 && !alertDismissed) {
+    document.getElementById('alert-count').textContent = newSinceBackup;
+    alert.classList.add('show');
+  } else {
+    alert.classList.remove('show');
+  }
+}
+function dismissAlert() {
+  alertDismissed = true;
+  document.getElementById('backup-alert').classList.remove('show');
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function togglePick(id, ev) {
+  ev.stopPropagation();
+  if (picked.has(id)) picked.delete(id); else picked.add(id);
+  savePicked(); render();
+}
+
+function toggleMeeting() {
+  meetingMode = !meetingMode;
+  const btn = document.getElementById('meeting-btn');
+  btn.classList.toggle('active', meetingMode);
+  render();
+}
+
+function filtered() {
+  return skills.filter(s => {
+    if (meetingMode && !picked.has(s.id)) return false;
+    if (activeCat !== 'all' && s.cat !== activeCat) return false;
+    if (searchQ) {
+      const q = searchQ.toLowerCase();
+      const blob = (s.name + ' ' + s.desc + ' ' + (s.why||'')).toLowerCase();
+      if (!blob.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function renderCats() {
+  if (skills.length === 0) {
+    document.getElementById('cats').innerHTML = '';
+    return;
+  }
+  const counts = { all: skills.length };
+  skills.forEach(s => counts[s.cat] = (counts[s.cat]||0) + 1);
+  const html = Object.entries(CATS).map(([k, info]) => {
+    if (k !== 'all' && !counts[k]) return '';
+    const active = activeCat === k ? 'active' : '';
+    const colorClass = active ? `c-${k}` : '';
+    return `<button class="cat-btn ${active} ${colorClass}" onclick="setCat('${k}')">
+      ${info.label} <span style="opacity:.7">${counts[k]||0}</span>
+    </button>`;
+  }).join('');
+  document.getElementById('cats').innerHTML = html;
+}
+function setCat(c) { activeCat = c; render(); }
+
+function renderStats() {
+  if (skills.length === 0) {
+    document.getElementById('stats').innerHTML = '';
+    return;
+  }
+  const visible = filtered();
+  const items = [
+    { label:'סה"כ במאגר', val: skills.length },
+    { label:'מוצגים כעת', val: visible.length },
+    { label:'נבחרו לפגישה', val: picked.size },
+    { label:'מאז גיבוי אחרון', val: skills.length - lastBackupCount }
+  ];
+  document.getElementById('stats').innerHTML = items.map(i =>
+    `<div class="stat"><div class="stat-label">${i.label}</div><div class="stat-val">${i.val}</div></div>`
+  ).join('');
+}
+
+function renderGrid() {
+  const visible = filtered();
+  const empty = document.getElementById('empty');
+  const grid = document.getElementById('grid');
+
+  if (skills.length === 0) {
+    empty.style.display = 'block';
+    empty.innerHTML = '<div class="arrow">⬆️</div><h3>המאגר ריק</h3><p>לחץ על <strong>"הוסף skill חדש"</strong> למעלה כדי להתחיל לבנות את המאגר שלך.<br>או על <strong>"ייבוא מ-JSON"</strong> אם יש לך גיבוי קיים.</p>';
+    grid.innerHTML = '';
+    return;
+  }
+
+  if (visible.length === 0) {
+    empty.style.display = 'block';
+    empty.innerHTML = '<div class="arrow">🔍</div><h3>לא נמצאו skills התואמים לסינון</h3><p>נסה לשנות את החיפוש או הקטגוריה</p>';
+    grid.innerHTML = '';
+    return;
+  }
+
+  empty.style.display = 'none';
+  grid.innerHTML = visible.map(s => {
+    const isPicked = picked.has(s.id);
+    return `<div class="card ${isPicked?'picked':''}" onclick="showDetail('${s.id}')">
+      <div class="card-head">
+        <div class="card-name">${escapeHtml(s.name)}</div>
+        <button class="pick-btn ${isPicked?'picked':''}" onclick="togglePick('${s.id}', event)">
+          ${isPicked ? '★ נבחר' : '☆ הוסף'}
+        </button>
+      </div>
+      <span class="badge c-${s.cat}">${CATS[s.cat]?.label || s.cat}</span>
+      <div class="desc">${escapeHtml(s.desc)}</div>
+      ${s.why ? `<div class="why">💡 ${escapeHtml(s.why)}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function escapeHtml(t) {
+  const d = document.createElement('div'); d.textContent = t || ''; return d.innerHTML;
+}
+
+function render() {
+  renderCats(); renderStats(); renderGrid();
+  checkBackupAlert();
+}
+
+function showDetail(id) {
+  const s = skills.find(x => x.id === id);
+  if (!s) return;
+  document.getElementById('modal-content').innerHTML = `
+    <h2>${escapeHtml(s.name)}</h2>
+    <span class="badge c-${s.cat}">${CATS[s.cat]?.label || s.cat}</span>
+    ${s.desc ? `<h3>תיאור</h3><p>${escapeHtml(s.desc)}</p>` : ''}
+    ${s.why ? `<h3>למה זה שווה לצוות</h3><p>${escapeHtml(s.why)}</p>` : ''}
+    ${s.source ? `<h3>מקור</h3><p>${escapeHtml(s.source)}</p>` : ''}
+    ${s.install ? `<h3>התקנה</h3><pre>${escapeHtml(s.install)}</pre>` : ''}
+    <button class="modal-close" onclick="closeModal()">סגירה</button>
+    <button class="modal-close" style="background:#fcebeb;color:#791f1f;border-color:#e24b4a;margin-top:8px" onclick="deleteSkill('${s.id}')">מחיקה מהמאגר</button>
+  `;
+  document.getElementById('modal').classList.add('show');
+}
+function closeModal(ev) {
+  if (!ev || ev.target.id === 'modal') document.getElementById('modal').classList.remove('show');
+}
+
+function deleteSkill(id) {
+  if (!confirm('למחוק את ה-skill הזה מהמאגר?')) return;
+  skills = skills.filter(s => s.id !== id);
+  picked.delete(id);
+  saveSkills(); savePicked(); closeModal(); render();
+  toast('נמחק');
+}
+
+function toggleAddForm() {
+  document.getElementById('add-form').classList.toggle('show');
+}
+function addSkill() {
+  const name = document.getElementById('f-name').value.trim();
+  if (!name) { alert('צריך לפחות שם'); return; }
+  const newSkill = {
+    id: 'sk-' + Date.now(),
+    name,
+    cat: document.getElementById('f-cat').value,
+    desc: document.getElementById('f-desc').value.trim(),
+    why: document.getElementById('f-why').value.trim(),
+    source: document.getElementById('f-source').value.trim(),
+    install: document.getElementById('f-install').value.trim()
+  };
+  skills.unshift(newSkill);
+  saveSkills();
+  ['f-name','f-desc','f-why','f-source','f-install'].forEach(i =>
+    document.getElementById(i).value = ''
+  );
+  toggleAddForm();
+  render();
+  toast('נוסף ל-' + (CATS[newSkill.cat]?.label || newSkill.cat));
+}
+
+function exportPicked() {
+  if (picked.size === 0) { alert('עדיין לא בחרת skills. סמן את ה-★ על הכרטיסים'); return; }
+  const items = skills.filter(s => picked.has(s.id));
+  const text = items.map((s,i) =>
+    `${i+1}. ${s.name} (${CATS[s.cat]?.label})\n   ${s.desc}\n   💡 ${s.why||''}\n   📦 ${s.install||''}\n`
+  ).join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    toast('הועתק ללוח! ' + items.length + ' skills');
+  }).catch(() => {
+    const w = window.open('', '_blank');
+    w.document.write('<pre style="direction:rtl;font-family:sans-serif;padding:20px">' + escapeHtml(text) + '</pre>');
+  });
+}
+
+function exportJSON() {
+  if (skills.length === 0) { alert('המאגר ריק - אין מה לגבות'); return; }
+  const data = { skills, picked: [...picked], exported: new Date().toISOString() };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const date = new Date().toISOString().slice(0, 10);
+  a.href = url; a.download = `claude-skills-${date}.json`;
+  a.click(); URL.revokeObjectURL(url);
+  lastBackupCount = skills.length;
+  localStorage.setItem('skills-last-backup', String(lastBackupCount));
+  alertDismissed = false;
+  render();
+  toast('גיבוי הורד ✓');
+}
+
+function importJSON(ev) {
+  const file = ev.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data.skills || !Array.isArray(data.skills)) throw new Error('פורמט שגוי');
+      const action = skills.length === 0
+        ? confirm(`לייבא ${data.skills.length} skills?`)
+        : confirm(`לייבא ${data.skills.length} skills?\n\nאישור = יחליף את המאגר הנוכחי (${skills.length} skills).\nביטול = לא יקרה כלום.`);
+      if (!action) return;
+      skills = data.skills;
+      picked = new Set(data.picked || []);
+      lastBackupCount = skills.length;
+      localStorage.setItem('skills-last-backup', String(lastBackupCount));
+      saveSkills(); savePicked(); render();
+      toast('יובאו ' + skills.length + ' skills');
+    } catch (err) { alert('שגיאה בייבוא: ' + err.message); }
+  };
+  reader.readAsText(file);
+  ev.target.value = '';
+}
+
+function resetData() {
+  if (skills.length === 0) { toast('המאגר כבר ריק'); return; }
+  if (!confirm(`לאפס את כל המאגר?\n\n${skills.length} skills יימחקו.\n\nכדאי לעשות גיבוי קודם!`)) return;
+  localStorage.removeItem('skills-data');
+  localStorage.removeItem('skills-picked');
+  localStorage.removeItem('skills-last-backup');
+  loadData(); render();
+  toast('המאגר אופס');
+}
+
+document.getElementById('search').addEventListener('input', e => {
+  searchQ = e.target.value; render();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+loadData();
+savePicked();
+render();
+</script>
+
+</body>
+</html>
