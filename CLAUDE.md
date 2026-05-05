@@ -36,7 +36,7 @@
 
 `core` · `engineering` · `qa` · `devops` · `productivity` · `integrations` · `meta` · `data`
 
-## תהליך להוספת skill חדש
+## תהליך להוספת skill חדש (ידני)
 
 1. קח את ה-URL מהמשתמש.
 2. WebFetch ל-repo כדי להוציא: שם, תיאור, פקודת התקנה, ערך לצוות.
@@ -45,3 +45,12 @@
 5. ייצר `id` ייחודי בפורמט `sk-<slug>` (למשל `sk-code-discipline`).
 6. הוסף את האובייקט למערך `skills` ב-`skills-import.json` (לא להחליף את הקיים).
 7. עדכן את שדה `exported` לתאריך נוכחי.
+
+## אוטומציה דרך טלגרם
+
+קישורים שנשלחים לבוט הטלגרם נוספים אוטומטית פעם ביום (07:00 UTC) על ידי GitHub Action.
+
+- Workflow: `.github/workflows/telegram-bot.yml` (cron יומי + `workflow_dispatch` להפעלה ידנית)
+- סקריפט: `.github/scripts/process-telegram.mjs` — מושך הודעות חדשות מטלגרם, קורא README, מבקש מ-Claude לסווג ולכתוב בעברית, מוסיף ל-JSON.
+- State: `.telegram-state.json` — שומר את `last_update_id` כדי לא לעבד פעמיים.
+- Secrets נדרשים ב-GitHub: `TELEGRAM_BOT_TOKEN`, `ALLOWED_CHAT_ID`, `ANTHROPIC_API_KEY`.
