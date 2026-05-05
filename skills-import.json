@@ -17,8 +17,17 @@
       "why": "כותב עברית 'דוגרי' אותנטית - לא תרגום מאנגלית. עוקף GPTZero, Originality.ai, Turnitin, Copyleaks ו-ZeroGPT. מנותח על בסיס 500K תגובות ישראליות אמיתיות (ממוצע 8.9 מילים למשפט). מזהה 55+ דפוסי AI ייחודיים בעברית. שכפול סגנון אישי מדוגמאות. סף איכות אוטונומי 95/100.",
       "source": "github.com/baldiga/hebrew-writer",
       "install": "mkdir -p ~/.claude/skills/hebrew-writer\ncurl -sL https://raw.githubusercontent.com/baldiga/hebrew-writer/main/SKILL.md -o ~/.claude/skills/hebrew-writer/SKILL.md\ncurl -sL https://raw.githubusercontent.com/baldiga/hebrew-writer/main/voice-profile-template.md -o ~/.claude/skills/hebrew-writer/voice-profile-template.md"
+    },
+    {
+      "id": "sk-claude-code-rtl-extension",
+      "name": "Claude Code RTL Support",
+      "cat": "integrations",
+      "desc": "הרחבה ל-VS Code שמוסיפה תמיכה בטקסט מימין-לשמאל (RTL) עבור עברית, ערבית ופרסית בממשק Claude Code, עם זיהוי אוטומטי וכפתור toggle.",
+      "why": "מפתחים עברים וערבים יכולים כעת לשוחח עם Claude בשפתם הטבעית עם יישור טקסט נכון, ללא השפעה על בלוקי קוד. זה משפר משמעותית את חוויית העבודה בשפות RTL תוך שמירה על תאימות מלאה עם קוד וממשקי משתמש.",
+      "source": "github.com/yechielby/claude-code-rtl-extension",
+      "install": "1. התקן את ההרחבה מ-VS Code Marketplace: https://marketplace.visualstudio.com/items?itemName=yechielby.claude-code-rtl\n2. לחץ על פקודת הפקודה (Ctrl+Shift+P / Cmd+Shift+P) והרץ: `Claude RTL: Activate RTL (Auto)` (מומלץ)"
     }
   ],
   "picked": [],
-  "exported": "2026-05-05T00:00:00.000Z"
+  "exported": "2026-05-05T15:33:30.995Z"
 }
