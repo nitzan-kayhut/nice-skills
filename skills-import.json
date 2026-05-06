@@ -26,8 +26,17 @@
       "why": "מפתחים עברים וערבים יכולים כעת לשוחח עם Claude בשפתם הטבעית עם יישור טקסט נכון, ללא השפעה על בלוקי קוד. זה משפר משמעותית את חוויית העבודה בשפות RTL תוך שמירה על תאימות מלאה עם קוד וממשקי משתמש.",
       "source": "github.com/yechielby/claude-code-rtl-extension",
       "install": "1. התקן את ההרחבה מ-VS Code Marketplace: https://marketplace.visualstudio.com/items?itemName=yechielby.claude-code-rtl\n2. לחץ על פקודת הפקודה (Ctrl+Shift+P / Cmd+Shift+P) והרץ: `Claude RTL: Activate RTL (Auto)` (מומלץ)"
+    },
+    {
+      "id": "sk-cc-polymath",
+      "name": "cc-polymath",
+      "cat": "meta",
+      "desc": "מערכת ניהול מיומנויות אטומיות (410+) עבור Claude Code המאורגנת בארכיטקטורה תלת-שכבתית לגילוי הדרגתי. מפחיתה צריכת tokens בהתחלה תוך שמירה על גישה לידע ניתוח מקיף.",
+      "why": "מחולל הוא מתמודד עם קונפליקט בסיסי: טעינת כל הידע מראש משתמשת בעשרות אלפי tokens, בעוד שהעדר ידע מהווה פגיעה בעבודה. פתרון זה משנה את המשחק בעולם ניהול ידע שלנו בהקשר מוגבל, מאפשר לטעון רק מיומנויות רלוונטיות דינמית.",
+      "source": "github.com/rand/cc-polymath",
+      "install": "/plugin marketplace add rand/cc-polymath\n/plugin install cc-polymath@cc-polymath"
     }
   ],
   "picked": [],
-  "exported": "2026-05-05T15:33:30.995Z"
+  "exported": "2026-05-06T08:32:22.854Z"
 }
