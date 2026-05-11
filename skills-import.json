@@ -44,8 +44,17 @@
       "why": "מערכת זו מגדילה משמעותית את הפרודוקטיביות של צוות הפיתוח על ידי אוטומציה של תהליכי עבודה חוזרים, הפחתת טעויות דרך TDD וסקירות שיטתיות, ואפשור לסוכנים לעבוד באופן עצמאי למשך שעות ללא הסטייה מהתכנית. הגישה השיטתית מבטיחה שהקוד המופק הוא בעל איכות גבוהה וקל לתחזוקה.",
       "source": "github.com/obra/superpowers",
       "install": "/plugin install superpowers@claude-plugins-official"
+    },
+    {
+      "id": "sk-llm-council",
+      "name": "LLM Council",
+      "cat": "integrations",
+      "desc": "מערכת שמקבצת מספר מודלי LLM לקבוצת ייעוץ המפתחת תשובות רב-שלביות: שלב ראשון אומדן בודד של כל מודל, שלב שני סקירה הדדית וטעינה, ושלב שלישי סיכום סופי של יו\"ר הוועדה.",
+      "why": "זה מאפשר הערכה מעמיקה של תשובות LLM שונות בהשוואה צדדית, ומקטין הטיות של מודלים בודדים דרך סקירה חוקית. התהליך הוועידה משפר את איכות התשובות הסופיות בהשוואה למודל יחיד, וחוקר סוגיות מורכבות עם פרספקטיבה רחבה.",
+      "source": "github.com/karpathy/llm-council",
+      "install": "uv sync\ncd frontend\nnpm install\ncd ..\n\nCreate .env file with: OPENROUTER_API_KEY=sk-or-v1-...\n\nThen run:\n./start.sh\n\nOr manually:\nuv run python -m backend.main\n(in another terminal) cd frontend && npm run dev"
     }
   ],
   "picked": [],
-  "exported": "2026-05-08T08:22:31.837Z"
+  "exported": "2026-05-11T10:39:41.301Z"
 }
