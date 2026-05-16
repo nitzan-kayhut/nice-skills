@@ -53,8 +53,17 @@
       "why": "זה מאפשר הערכה מעמיקה של תשובות LLM שונות בהשוואה צדדית, ומקטין הטיות של מודלים בודדים דרך סקירה חוקית. התהליך הוועידה משפר את איכות התשובות הסופיות בהשוואה למודל יחיד, וחוקר סוגיות מורכבות עם פרספקטיבה רחבה.",
       "source": "github.com/karpathy/llm-council",
       "install": "uv sync\ncd frontend\nnpm install\ncd ..\n\nCreate .env file with: OPENROUTER_API_KEY=sk-or-v1-...\n\nThen run:\n./start.sh\n\nOr manually:\nuv run python -m backend.main\n(in another terminal) cd frontend && npm run dev"
+    },
+    {
+      "id": "sk-autoresearch",
+      "name": "AutoResearch",
+      "cat": "meta",
+      "desc": "מערכת לניהול סוכנים אוטונומיים של AI שמבצעים מחקר בלימוד מודלים בצורה עצמאית, משנים קוד, מאמנים ובודקים שיפורים במשך לילה שלם.",
+      "why": "זה מאפשר לצוות להשתמש ב-AI agents כדי להריץ ניסויים מדעיים בקנה מידה גדול באופן אוטונומי, מה שמזיז את מוקד העבודה מלכתוב קוד ישירות לכתיבת הנחיות research בקובץ program.md, ומייעל את זמן המחקר והתפתוח.",
+      "source": "github.com/karpathy/autoresearch",
+      "install": "curl -LsSf https://astral.sh/uv/install.sh | sh\nuv sync\nuv run prepare.py\nuv run train.py"
     }
   ],
   "picked": [],
-  "exported": "2026-05-11T10:39:41.301Z"
+  "exported": "2026-05-16T08:49:42.497Z"
 }
