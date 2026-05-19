@@ -62,8 +62,17 @@
       "why": "זה מאפשר לצוות להשתמש ב-AI agents כדי להריץ ניסויים מדעיים בקנה מידה גדול באופן אוטונומי, מה שמזיז את מוקד העבודה מלכתוב קוד ישירות לכתיבת הנחיות research בקובץ program.md, ומייעל את זמן המחקר והתפתוח.",
       "source": "github.com/karpathy/autoresearch",
       "install": "curl -LsSf https://astral.sh/uv/install.sh | sh\nuv sync\nuv run prepare.py\nuv run train.py"
+    },
+    {
+      "id": "sk-agent-scripts",
+      "name": "agent-scripts",
+      "cat": "meta",
+      "desc": "ריכוז מרכזי להוראות סוכנים משותפות, כישורים ניידים וסקריפטים עוזרים לסביבות עבודה מקומיות. מכיל AGENTS.MD לכללים קשים, תיקיית skills לזרימות עבודה, וכלים כמו validate-skills ו-committer.",
+      "why": "מרכזי מקור אמת לכללי סוכנים ושיתוף קוד בין פרויקטים, מונע שכפול וממשיך עקביות בכל סביבות Claude/Codex. הסקריפטים והוולידציה מבטיחים איכות ועקביות בכל המערכת.",
+      "source": "github.com/steipete/agent-scripts",
+      "install": "symlink: ~/.codex/skills -> ~/Projects/agent-scripts/skills\nsymlink: ~/.codex/AGENTS.md -> ~/Projects/agent-scripts/AGENTS.MD\nsymlink: ~/.claude/skills -> ~/Projects/agent-scripts/skills\nsymlink: ~/.claude/AGENTS.md -> ~/Projects/agent-scripts/AGENTS.MD\nsymlink: ~/.claude/CLAUDE.md -> ~/Projects/agent-scripts/AGENTS.MD\nenable hooks: git config core.hooksPath hooks"
     }
   ],
   "picked": [],
-  "exported": "2026-05-16T08:49:42.497Z"
+  "exported": "2026-05-19T10:38:10.976Z"
 }
