@@ -71,8 +71,17 @@
       "why": "מרכזי מקור אמת לכללי סוכנים ושיתוף קוד בין פרויקטים, מונע שכפול וממשיך עקביות בכל סביבות Claude/Codex. הסקריפטים והוולידציה מבטיחים איכות ועקביות בכל המערכת.",
       "source": "github.com/steipete/agent-scripts",
       "install": "symlink: ~/.codex/skills -> ~/Projects/agent-scripts/skills\nsymlink: ~/.codex/AGENTS.md -> ~/Projects/agent-scripts/AGENTS.MD\nsymlink: ~/.claude/skills -> ~/Projects/agent-scripts/skills\nsymlink: ~/.claude/AGENTS.md -> ~/Projects/agent-scripts/AGENTS.MD\nsymlink: ~/.claude/CLAUDE.md -> ~/Projects/agent-scripts/AGENTS.MD\nenable hooks: git config core.hooksPath hooks"
+    },
+    {
+      "id": "sk-boost",
+      "name": "Boost",
+      "cat": "devops",
+      "desc": "כלי להאצת סוכנים קוד וCI על ידי דחיסת פלטים של פקודות, ניהול cache תוכן-מכוון, וייצוא טלמטריה OpenTelemetry. מפחית עד 90% מ-tokens בהקשר של הסוכן ויאפשר שימוש זהה בטרמינל, עורכים קוד, וCI.",
+      "why": "מאיץ משמעותית הרצות פקודות בעבודת סוכנים קוד והרכבות CI על ידי צמצום רעש בפלטים, שיפור ביצועים דרך cache חכם, וכלילת טלמטריה עמוקה. תומך בכלים פופולריים כמו Cursor, Claude Code, וGitHub Actions עם בינרי יחיד.",
+      "source": "github.com/jfrog/boost",
+      "install": "curl -fsSL https://raw.githubusercontent.com/jfrog/boost/main/install.sh | bash"
     }
   ],
   "picked": [],
-  "exported": "2026-05-19T10:38:10.976Z"
+  "exported": "2026-05-20T10:25:52.774Z"
 }
