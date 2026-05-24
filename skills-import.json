@@ -80,8 +80,17 @@
       "why": "מאיץ משמעותית הרצות פקודות בעבודת סוכנים קוד והרכבות CI על ידי צמצום רעש בפלטים, שיפור ביצועים דרך cache חכם, וכלילת טלמטריה עמוקה. תומך בכלים פופולריים כמו Cursor, Claude Code, וGitHub Actions עם בינרי יחיד.",
       "source": "github.com/jfrog/boost",
       "install": "curl -fsSL https://raw.githubusercontent.com/jfrog/boost/main/install.sh | bash"
+    },
+    {
+      "id": "sk-claude-managed-agents",
+      "name": "Claude Managed Agents on Cloudflare",
+      "cat": "devops",
+      "desc": "פלטפורמה לנהול סוכנים של Claude על תשתית Cloudflare, המאפשרת הרצת sandbox-ים עם בקרה מותאמת אישית על משאבים, אבטחה וכלים קוסטומיים.",
+      "why": "מאפשר פריסה והנהלה עצמאית של סוכנים ב-Claude עם שליטה מלאה על הסביבה, האבטחה וההרשאות, תוך שימוש בתשתית Cloudflare הקיימת. חיוני לארגונים הזקוקים ל-deployment סטבילי וניתן להרחבה עם השתלבות לכלים פנימיים ושירותים פרטיים.",
+      "source": "github.com/cloudflare/claude-managed-agents",
+      "install": "npm run deploy\n\nאו: לחץ על כפתור Deploy to Cloudflare ב-README להפעלה מבוססת Git"
     }
   ],
   "picked": [],
-  "exported": "2026-05-20T10:25:52.774Z"
+  "exported": "2026-05-24T09:22:33.415Z"
 }
