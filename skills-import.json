@@ -89,8 +89,17 @@
       "why": "מאפשר פריסה והנהלה עצמאית של סוכנים ב-Claude עם שליטה מלאה על הסביבה, האבטחה וההרשאות, תוך שימוש בתשתית Cloudflare הקיימת. חיוני לארגונים הזקוקים ל-deployment סטבילי וניתן להרחבה עם השתלבות לכלים פנימיים ושירותים פרטיים.",
       "source": "github.com/cloudflare/claude-managed-agents",
       "install": "npm run deploy\n\nאו: לחץ על כפתור Deploy to Cloudflare ב-README להפעלה מבוססת Git"
+    },
+    {
+      "id": "sk-claude-dashboard",
+      "name": "Claude Dashboard",
+      "cat": "meta",
+      "desc": "לוח בקרה מקומי להצגת ניתוח שימוש Claude Code - עוקב אחרי tokenים, מודלים, כלים ופעילות לאורך זמן ללא צורך בחיבור רשת או API key.",
+      "why": "מאפשר צפייה בזמן אמת בדפוסי שימוש Claude, זיהוי כלים שנעשה בהם שימוש תכוף, והבנת תוך-חלוקת עלויות tokenים בין מודלים - חיוני לאופטימיזציה של זרימות עבודה ובקרת עלויות.",
+      "source": "github.com/iftahs/claude-dashboard",
+      "install": "git clone https://github.com/iftahs/claude-dashboard.git\ncd claude-dashboard\nnpm install\nnpm run dev"
     }
   ],
   "picked": [],
-  "exported": "2026-05-24T09:22:33.415Z"
+  "exported": "2026-05-30T09:20:59.703Z"
 }
