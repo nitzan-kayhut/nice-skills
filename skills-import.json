@@ -98,8 +98,17 @@
       "why": "מאפשר צפייה בזמן אמת בדפוסי שימוש Claude, זיהוי כלים שנעשה בהם שימוש תכוף, והבנת תוך-חלוקת עלויות tokenים בין מודלים - חיוני לאופטימיזציה של זרימות עבודה ובקרת עלויות.",
       "source": "github.com/iftahs/claude-dashboard",
       "install": "git clone https://github.com/iftahs/claude-dashboard.git\ncd claude-dashboard\nnpm install\nnpm run dev"
+    },
+    {
+      "id": "sk-open-code-review",
+      "name": "Open Code Review",
+      "cat": "qa",
+      "desc": "כלי ביקורת קוד מופעל בינה מלאכותית המנתח Git diffs ויוצר הערות מובנות בדיוק שורה-אחר-שורה. הכלי משלב הנדסה דטרמיניסטית עם סוכן AI כדי להבטיח כיסוי מלא וודאות למיקום הבעיות.",
+      "why": "ביקורת קוד ידנית היא בעלת עלות גבוהה ועלולה להחמיץ בעיות. Open Code Review מספק ביקורת עקבית וממוקדת בהנדסה בקנה מידה גדול, שהוכחה בייצור ב-Alibaba עם מיליוני ליקויים שזוהו. זה משפר את איכות הקוד ומשחרר משאבים של מפתחים.",
+      "source": "github.com/alibaba/open-code-review",
+      "install": "npx skills add alibaba/open-code-review --skill open-code-review"
     }
   ],
   "picked": [],
-  "exported": "2026-05-30T09:20:59.703Z"
+  "exported": "2026-06-05T10:50:16.377Z"
 }
