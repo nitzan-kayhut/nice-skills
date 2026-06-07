@@ -107,8 +107,35 @@
       "why": "ביקורת קוד ידנית היא בעלת עלות גבוהה ועלולה להחמיץ בעיות. Open Code Review מספק ביקורת עקבית וממוקדת בהנדסה בקנה מידה גדול, שהוכחה בייצור ב-Alibaba עם מיליוני ליקויים שזוהו. זה משפר את איכות הקוד ומשחרר משאבים של מפתחים.",
       "source": "github.com/alibaba/open-code-review",
       "install": "npx skills add alibaba/open-code-review --skill open-code-review"
+    },
+    {
+      "id": "sk-understand-anything",
+      "name": "Understand Anything",
+      "cat": "productivity",
+      "desc": "תוסף שמחזיר כל בסיס קוד, מאגר ידע או תיעוד לגרף ידע אינטראקטיבי שניתן לחקור, לחפש ולשאול עליו שאלות דרך ממשק דשבורד חזותי.",
+      "why": "חוסך זמן משמעותי בהבנת קודבייסים גדולים על ידי יצירת מפה ויזואלית של הקשרים בין קבצים, פונקציות וקלאסים. מאפשר חיפוש סמנטי, ניתוח השפעת שינויים, וטורים מודרכים להכנסת צוותים חדשים.",
+      "source": "github.com/Lum1104/Understand-Anything",
+      "install": "/plugin marketplace add Lum1104/Understand-Anything\n/plugin install understand-anything"
+    },
+    {
+      "id": "sk-graphify",
+      "name": "Graphify",
+      "cat": "productivity",
+      "desc": "מטפל פרויקט המממיר קוד, תיעוד, PDF, תמונות וסרטונים לגרף ידע הניתן לשאילתה, במקום חיפוש ידני בקבצים.",
+      "why": "חוסך זמן משמעותי בהבנת ארכיטקטורת פרויקט על ידי יצירת מפה ויזואלית של כל המרכיבים והקשרים ביניהם. מאפשר שאילתות מהירות על הגרף במקום קריאה חוזרת של קבצים, ומספק דוח מובנה של מושגים וחיבורים חשובים.",
+      "source": "github.com/safishamsi/graphify",
+      "install": "uv tool install graphifyy\n\ngraphify install"
+    },
+    {
+      "id": "sk-headroom",
+      "name": "Headroom",
+      "cat": "productivity",
+      "desc": "שכבת דחיסת הקשר עבור סוכני AI המקטינה את כמות הטוקנים בעד 95% בתוך זיכרון, יומנים, וטקסטים חזרה להודעות ללא התערבות בדיוק התשובות.",
+      "why": "הקטנת צריכת הטוקנים מובילה לעלות משמעותית נמוכה יותר, תגובות מהירות יותר, ויעילות גבוהה יותר של סוכנים בעבודה עם כמויות גדולות של נתונים. תמיכה בפאטרנים מרובים (ספריה, פרוקסי, MCP) מאפשרת שילוב גמיש בכל סביבת עבודה.",
+      "source": "github.com/chopratejas/headroom",
+      "install": "pip install \"headroom-ai[all]\"\nnpm install headroom-ai\nheadroom wrap claude"
     }
   ],
   "picked": [],
-  "exported": "2026-06-05T10:50:16.377Z"
+  "exported": "2026-06-07T10:06:48.444Z"
 }
