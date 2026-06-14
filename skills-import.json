@@ -143,8 +143,17 @@
       "why": "מאפשר ל-Claude לשמור רצף ידע על פרויקטים גם לאחר סיום הפעלה, מצמצם אובדן הקשר וחוזר על עבודה שכבר בוצעה. משפר בעיקר שיתוף פעולה ברוב זמן הפעלה באמצעות זיכרון קבוע ותצוגת ממשק אינטראקטיבית.",
       "source": "github.com/thedotmack/claude-mem",
       "install": "npx claude-mem install"
+    },
+    {
+      "id": "sk-claude-unimath",
+      "name": "Claude-UniMath",
+      "cat": "integrations",
+      "desc": "תיקיית RTL ראשונה להנדסת קוד למתמטיקה בסביבת Claude Desktop ב-macOS. תומכת בעברית, ערבית, פרסית וכל שפות RTL אחרות עם LaTeX ו-KaTeX שנשארים ישרים ותקינים.",
+      "why": "משום שקלוד דסקטופ אין בו תמיכה RTL כלל, כל שיחה ארוכה בעברית היא מאבק — ובמיוחד כשClaude כותב מתמטיקה. זה פתרון ראשון שמבודד נוסחאות מטקסט RTL באופן נכון, תוך הבדלה בין דולר של מחיר לבין סימן מתמטיקה.",
+      "source": "github.com/DavidiBellaire/Claude-UniMath",
+      "install": "git clone https://github.com/DavidiBellaire/Claude-UniMath.git\ncd Claude-UniMath\nchmod +x install.sh\n./install.sh --install"
     }
   ],
   "picked": [],
-  "exported": "2026-06-09T10:35:26.090Z"
+  "exported": "2026-06-14T10:26:34.316Z"
 }
