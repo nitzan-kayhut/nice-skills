@@ -152,8 +152,17 @@
       "why": "משום שקלוד דסקטופ אין בו תמיכה RTL כלל, כל שיחה ארוכה בעברית היא מאבק — ובמיוחד כשClaude כותב מתמטיקה. זה פתרון ראשון שמבודד נוסחאות מטקסט RTL באופן נכון, תוך הבדלה בין דולר של מחיר לבין סימן מתמטיקה.",
       "source": "github.com/DavidiBellaire/Claude-UniMath",
       "install": "git clone https://github.com/DavidiBellaire/Claude-UniMath.git\ncd Claude-UniMath\nchmod +x install.sh\n./install.sh --install"
+    },
+    {
+      "id": "sk-claude-desktop-rtl-patch",
+      "name": "Claude Desktop RTL Patch",
+      "cat": "meta",
+      "desc": "תיקייה שמאפשרת תמיכה מלאה בעברית וערבית (RTL) בClaude Desktop על Windows, כולל זיהוי אוטומטי של כיווניות טקסט, טיפול נכון בקוד וטבלאות, והתאמת ממשק המשתמש לשפות RTL.",
+      "why": "משתמשי עברית וערבית משתמשים ב-Claude Desktop עם חוויה שבורה של כיווניות טקסט והממשק. התיקייה הזו מספקת פתרון מלא שעובד על פני עדכונים ומציעה אפשרויות גיבוי והחזרה אוטומטיות, כך שהתמיכה בעברית נשמרת תמיד.",
+      "source": "github.com/shraga100/claude-desktop-rtl-patch",
+      "install": "irm https://raw.githubusercontent.com/shraga100/claude-desktop-rtl-patch/main/install.ps1 | iex"
     }
   ],
   "picked": [],
-  "exported": "2026-06-14T10:26:34.316Z"
+  "exported": "2026-06-16T12:13:14.703Z"
 }
