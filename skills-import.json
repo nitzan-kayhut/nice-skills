@@ -161,8 +161,17 @@
       "why": "משתמשי עברית וערבית משתמשים ב-Claude Desktop עם חוויה שבורה של כיווניות טקסט והממשק. התיקייה הזו מספקת פתרון מלא שעובד על פני עדכונים ומציעה אפשרויות גיבוי והחזרה אוטומטיות, כך שהתמיכה בעברית נשמרת תמיד.",
       "source": "github.com/shraga100/claude-desktop-rtl-patch",
       "install": "irm https://raw.githubusercontent.com/shraga100/claude-desktop-rtl-patch/main/install.ps1 | iex"
+    },
+    {
+      "id": "sk-skills",
+      "name": "Skills for Real Engineers",
+      "cat": "core",
+      "desc": "מארז כישורים לעבודה עם Claude Code המכסה יישור עם הדרישות, תקשורת טובה עם ה-AI, לולאות משוב, ותכנון אדריכלות קוד.",
+      "why": "כישורים אלה מתמודדים עם כשלים נפוצים בעבודה עם סוכנים קוד: חוסר יישור על הדרישות, קוד מפורט מדי, קוד שלא עובד, וארכיטקטורה חלשה. הם מבוססים על עשרות שנות ניסיון הנדסה ונועדו להיות קטנים, קלים להתאמה וניתנים להרכבה.",
+      "source": "github.com/mattpocock/skills",
+      "install": "npx skills@latest add mattpocock/skills"
     }
   ],
   "picked": [],
-  "exported": "2026-06-16T12:13:14.703Z"
+  "exported": "2026-07-11T08:49:23.015Z"
 }
