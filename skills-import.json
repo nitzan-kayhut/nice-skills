@@ -170,8 +170,17 @@
       "why": "כישורים אלה מתמודדים עם כשלים נפוצים בעבודה עם סוכנים קוד: חוסר יישור על הדרישות, קוד מפורט מדי, קוד שלא עובד, וארכיטקטורה חלשה. הם מבוססים על עשרות שנות ניסיון הנדסה ונועדו להיות קטנים, קלים להתאמה וניתנים להרכבה.",
       "source": "github.com/mattpocock/skills",
       "install": "npx skills@latest add mattpocock/skills"
+    },
+    {
+      "id": "sk-loop-board",
+      "name": "loop-board",
+      "cat": "devops",
+      "desc": "מערכת לוח משימות עם לולאת עבודה עצמית שמנהלת PRs בצורה בטוחה - סוכן קורא משימות מהלוח, יוצר PR בעץ git מבודד, מנהל בדיקות, ומטפל בתגובות ביקורת עד שמעבר לבדיקה ידנית של האדם.",
+      "why": "מאפשר לסוכן Claude להטמין שינויים בקוד בצורה מהימנה וניתנת לשליטה - הסוכן לא יכול לגעת בחזקת העבודה הראשית או לשנות סטטוסים שהיא מש\"צ למעבר ידני, מה שהופך את התהליך לבטוח לריצה אוטונומית בעודך משגחח על הוצאת הדברים.",
+      "source": "github.com/brittanyellich/loop-board",
+      "install": "git clone https://github.com/<you>/loop-board ~/loop-board\nmkdir -p ~/.claude/skills\ncp -R ~/loop-board/skills/set-up-the-board ~/.claude/skills/\n\nהפעל מחדש את סשן הסוכן, ואז בתוך הריפו שאתה רוצה לעבוד עליו:\n\n/set-up-the-board"
     }
   ],
   "picked": [],
-  "exported": "2026-07-11T08:49:23.015Z"
+  "exported": "2026-08-01T09:07:28.606Z"
 }
