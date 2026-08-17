@@ -188,8 +188,17 @@
       "why": "הסוכן שלך מוציא 31.6% פחות טוקנים בפלט ו-3.8 קריאות כלים במקום 7.2, כי הקשר מחושב מראש. מספק ציון סיכון שינוי, מפת בריאות קוד, ודירוג תקלים עם ROC AUC 0.737 על פני 21 מאגרים - הכל ברשת המקומית שלך, ללא קריאות LLM נוספות.",
       "source": "github.com/repowise-dev/repowise",
       "install": "pip install repowise"
+    },
+    {
+      "id": "sk-deepseek-harness",
+      "name": "DeepSeek Harness",
+      "cat": "meta",
+      "desc": "מסגרת agent open-source המבוססת על ארכיטקטורת plugin המאפשרת בנייה וניהול של agents עם ממשק משתמש ווב.",
+      "why": "כלי זה מאפשר פיתוח מהיר של agents באמצעות מודל plugin גמיש, עם תמיכה בקומוזביליות זמנו-מרחבית, וממשק משתמש שנגיש מה-npm ישירות.",
+      "source": "github.com/deepseek-ai/deepseek-harness",
+      "install": "npx @deepseek-ai/dsh web\n\nאו מקוד:\ngit clone https://github.com/deepseek-ai/deepseek-harness.git\ncd deepseek-harness\npnpm install\npnpm run build\npnpm dsh web"
     }
   ],
   "picked": [],
-  "exported": "2026-08-09T07:54:36.465Z"
+  "exported": "2026-08-17T07:53:52.035Z"
 }
